@@ -1,34 +1,34 @@
 # Import
 from flask import Flask, render_template,request, redirect
-# Connecting the database library
+# Collegare la libreria del database
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-# Connecting SQLite
+# Connettere SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# Creating a DB
+# Creare il DB
 db = SQLAlchemy(app)
-# Creating a table
+# Creare la tabella
 
 class Card(db.Model):
-    # Creating columns
+    # Creazione delle colonne
     # id
     id = db.Column(db.Integer, primary_key=True)
-    # Title
+    # Titolo
     title = db.Column(db.String(100), nullable=False)
-    # Description
+    # Sottotitolo
     subtitle = db.Column(db.String(300), nullable=False)
-    # Text
+    # Testo
     text = db.Column(db.Text, nullable=False)
 
-    # Outputting the object and id
+    # Visualizzazione dell'oggetto e dell'id
     def __repr__(self):
         return f'<Card {self.id}>'
     
 
-#Assignment #2. Create the User table
+#Consegna #2. Creare la tabella User
 
 
 
