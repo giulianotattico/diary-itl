@@ -38,7 +38,7 @@ class Card(db.Model):
 
 
 
-# Running the content page
+# Esecuzione della pagina dei contenuti
 @app.route('/', methods=['GET','POST'])
 def login():
         error = ''
@@ -46,7 +46,7 @@ def login():
             form_login = request.form['email']
             form_password = request.form['password']
             
-            #Assignment #4. Implement authorisation
+            #Consegna #4. Implementare l'autorizzazione
             
 
 
@@ -62,7 +62,7 @@ def reg():
         login= request.form['email']
         password = request.form['password']
         
-        #Assignment #3. Make it so that the user's data is recorded to the database
+        #Consegna #3. Fare in modo che i dati dell'utente vengano registrati nel database.
         
 
         
@@ -72,26 +72,26 @@ def reg():
         return render_template('registration.html')
 
 
-# Running the content page
+# Esecuzione della pagina dei contenuti
 @app.route('/index')
 def index():
-    # Displaying the databaase entries
+    # Visualizzazione delle voci del database
     cards = Card.query.order_by(Card.id).all()
     return render_template('index.html', cards=cards)
 
-# Running the page with the entry
+# Esecuzione della pagina con la voce
 @app.route('/card/<int:id>')
 def card(id):
     card = Card.query.get(id)
 
     return render_template('card.html', card=card)
 
-# Running the entry creation page
+# Esecuzione della pagina di creazione della voce
 @app.route('/create')
 def create():
     return render_template('create_card.html')
 
-# The entry forn
+# Il modulo di iscrizione
 @app.route('/form_create', methods=['GET','POST'])
 def form_create():
     if request.method == 'POST':
@@ -99,7 +99,7 @@ def form_create():
         subtitle =  request.form['subtitle']
         text =  request.form['text']
 
-        # Creating an object that will be sent to the DB
+        # Creare un oggetto che sarà inviato al DB
         card = Card(title=title, subtitle=subtitle, text=text)
 
         db.session.add(card)
