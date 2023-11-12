@@ -1,17 +1,17 @@
 # Import
 from flask import Flask, render_template,request, redirect
-# Importing the database library
+# Importare la libreria del database
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-# Connecting SQLite
+# Collegamento con SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# Creating a DB
+# Creare un DB
 db = SQLAlchemy(app )
 
-#Assignment #1. Create a DB table
+#Consegna #1. Creare una tabella del DB
 
 
 
@@ -23,11 +23,11 @@ db = SQLAlchemy(app )
 
 
 
-# Running the page with content
+# Esecuzione della pagina con il contenuto
 @app.route('/')
 def index():
-    # Displaying the DB objects
-    # Assignment #2. Display the objects from the DB in index.html
+    # Visualizzazione degli oggetti del DB
+    # Consegna #2. Visualizzare gli oggetti del DB in index.html
     
 
     return render_template('index.html',
@@ -35,20 +35,20 @@ def index():
 
                            )
 
-# Running the page with the card
+# Esecuzione della pagina con la scheda
 @app.route('/card/<int:id>')
 def card(id):
-    # Assignment #2. Display the right card by its id
+    # Consegna #2. Mostrare la scheda giusta in base al suo id
     
 
     return render_template('card.html', card=card)
 
-# Running the page and creating the card
+# Esecuzione della pagina e creazione della scheda
 @app.route('/create')
 def create():
     return render_template('create_card.html')
 
-# The card form
+# Il modulo della scheda
 @app.route('/form_create', methods=['GET','POST'])
 def form_create():
     if request.method == 'POST':
@@ -56,7 +56,7 @@ def form_create():
         subtitle =  request.form['subtitle']
         text =  request.form['text']
 
-        # Assignment #2. Create a way to store data in the DB
+        # Consegna #2. Creare un modo per memorizzare i dati nel DB
         
 
 
